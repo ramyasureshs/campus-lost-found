@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Campus Lost and Found</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #f0f4f8;
+            text-align: center;
+            padding: 30px;
+        }
+
+        h1 {
+            color: #2563eb;
+        }
+
+        input, button {
+            padding: 10px;
+            margin: 8px;
+        }
+
+        button {
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>🎒 Campus Lost and Found</h1>
+    <p>Lost something? Find it here!</p>
+
+    <input id="item" placeholder="Enter item name">
+    <input id="place" placeholder="Lost place">
+
+    <button onclick="addItem()">Add Item</button>
+
+    <h2>Lost Items</h2>
+    <ul id="list"></ul>
+
+    <script>
+        function addItem() {
+            let item = document.getElementById("item").value;
+            let place = document.getElementById("place").value;
+
+            if (item === "" || place === "") {
+                alert("Please enter all details");
+                return;
+            }
+
+            let li = document.createElement("li");
+            li.textContent = item + " - " + place;
+
+            document.getElementById("list").appendChild(li);
+
+            document.getElementById("item").value = "";
+            document.getElementById("place").value = "";
+        }
+    </script>
+
+</body>
+</html>
