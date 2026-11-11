@@ -1,65 +1,55 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Campus Lost and Found</title>
-    <link rel="stylesheet"href="style.css">
-    <style>
-        body {
-            font-family: Arial;
-            background: #f0f4f8;
-            text-align: center;
-            padding: 30px;
-        }
-
-        h1 {
-            color: #2563eb;
-        }
-
-        input, button {
-            padding: 10px;
-            margin: 8px;
-        }
-
-        button {
-            background: #2563eb;
-            color: white;
-            border: none;
-            border-radius: 5px;
-        }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus Lost & Found</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <h1>🎒 Campus Lost and Found</h1>
-    <p>Lost something? Find it here!</p>
+<header>
+    <h1>🎓 Campus Lost & Found</h1>
+    <p>Lost something? Let's help you find it!</p>
+</header>
 
-    <input id="item" placeholder="Enter item name">
-    <input id="place" placeholder="Lost place">
+<main>
+    <section class="form-box">
+        <h2>Report an Item</h2>
 
-    <button onclick="addItem()">Add Item</button>
+        <input id="itemName" placeholder="Item name">
 
-    <h2>Lost Items</h2>
-    <ul id="list"></ul>
+        <select id="itemType">
+            <option value="Lost">Lost Item</option>
+            <option value="Found">Found Item</option>
+        </select>
 
-    <script src="script.js">
-        function addItem() {
-            let item = document.getElementById("item").value;
-            let place = document.getElementById("place").value;
+        <input id="location" placeholder="Location">
+        <input id="date" type="date">
 
-            if (item === "" || place === "") {
-                alert("Please enter all details");
-                return;
-            }
+        <button onclick="addItem()">Submit Item</button>
+    </section>
 
-            let li = document.createElement("li");
-            li.textContent = item + " - " + place;
+    <section class="items-box">
+        <h2>Recently Reported Items</h2>
 
-            document.getElementById("list").appendChild(li);
+        <input id="search" placeholder="Search items..."
+               oninput="displayItems()">
 
-            document.getElementById("item").value = "";
-            document.getElementById("place").value = "";
-        }
-    </script>
+        <select id="filter" onchange="displayItems()">
+            <option value="All">All Items</option>
+            <option value="Lost">Lost Items</option>
+            <option value="Found">Found Items</option>
+        </select>
 
+        <div id="items"></div>
+    </section>
+</main>
+
+<footer>
+    <p>Made with 💙 for our campus</p>
+</footer>
+
+<script src="script.js"></script>
 </body>
 </html>
